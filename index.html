@@ -24,7 +24,6 @@
     <!-- ১. ওয়েলকাম / ল্যান্ডিং গেটওয়ে (লগইনের আগে দেখাবে) -->
     <!-- ========================================= -->
     <div id="welcomeScreen" class="fixed inset-0 bg-[#070913] z-50 flex flex-col items-center justify-center p-4 text-center overflow-y-auto">
-        <!-- ব্যাকগ্রাউন্ড গ্লো ইফেক্ট -->
         <div class="absolute w-72 h-72 bg-purple-600/15 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="relative z-10 max-w-md w-full my-auto py-8">
@@ -46,10 +45,10 @@
                 </div>
                 
                 <div class="flex gap-3">
-                    <button onclick="openModal('signup')" class="flex-1 bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold py-3 rounded-2xl transition text-xs shadow-lg">
+                    <button type="button" onclick="openModal('signup')" class="flex-1 bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold py-3 rounded-2xl transition text-xs shadow-lg">
                         সাইন-আপ (Register)
                     </button>
-                    <button onclick="openModal('login')" class="flex-1 bg-[#1a2234] border border-gray-700 hover:border-purple-500 text-white font-bold py-3 rounded-2xl transition text-xs shadow-md">
+                    <button type="button" onclick="openModal('login')" class="flex-1 bg-[#1a2234] border border-gray-700 hover:border-purple-500 text-white font-bold py-3 rounded-2xl transition text-xs shadow-md">
                         লগইন করুন
                     </button>
                 </div>
@@ -75,7 +74,7 @@
                             <p class="text-[10px] text-purple-400">VIP Studio</p>
                         </div>
                     </div>
-                    <button onclick="logout()" class="lg:hidden bg-red-600/20 border border-red-500/40 text-red-400 text-[11px] font-medium px-3 py-1.5 rounded-xl transition">লগআউট</button>
+                    <button type="button" onclick="logout()" class="lg:hidden bg-red-600/20 border border-red-500/40 text-red-400 text-[11px] font-medium px-3 py-1.5 rounded-xl transition">লগআউট</button>
                 </div>
 
                 <!-- Menu Links -->
@@ -120,7 +119,7 @@
             <!-- Top Bar -->
             <div class="hidden lg:flex justify-between items-center mb-6">
                 <div class="text-xs text-purple-400 font-medium bg-purple-500/10 px-4 py-2 rounded-xl border border-purple-500/20">✨ Welcome Sohel AI VIP Dashboard</div>
-                <button onclick="logout()" class="bg-red-600/20 border border-red-500/40 hover:bg-red-600/30 text-red-400 text-sm font-medium px-4 py-2 rounded-2xl transition shadow-md flex items-center gap-2">
+                <button type="button" onclick="logout()" class="bg-red-600/20 border border-red-500/40 hover:bg-red-600/30 text-red-400 text-sm font-medium px-4 py-2 rounded-2xl transition shadow-md flex items-center gap-2">
                     <span>🚪</span> লগআউট (Logout)
                 </button>
             </div>
@@ -186,7 +185,7 @@
                 </div>
             </div>
 
-            <!-- Video Dubbing Section (Inspired by Image 2) -->
+            <!-- Video Dubbing Section -->
             <div class="bg-[#111827] border border-gray-800 rounded-3xl p-5 lg:p-6 mb-6 shadow-xl">
                 <div class="flex items-center gap-3 mb-2">
                     <span class="text-2xl">🎙️</span>
@@ -201,7 +200,7 @@
                         <span class="text-3xl mb-2">📁</span>
                         <h4 class="font-semibold text-xs lg:text-sm mb-1">ভিডিও ফাইল নির্বাচন করুন</h4>
                         <p class="text-[10px] text-gray-500 mb-3">MP4, MOV, MKV, AVI (Max 500MB)</p>
-                        <button class="bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium px-4 py-2 rounded-xl transition shadow-md">ফাইল আপলোড</button>
+                        <button type="button" class="bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium px-4 py-2 rounded-xl transition shadow-md">ফাইল আপলোড</button>
                     </div>
 
                     <div class="space-y-3 flex flex-col justify-between">
@@ -228,7 +227,7 @@
                 </div>
 
                 <div class="mt-5 text-center">
-                    <button class="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:opacity-90 text-white font-bold py-3 rounded-2xl shadow-lg transition text-xs lg:text-sm">
+                    <button type="button" class="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:opacity-90 text-white font-bold py-3 rounded-2xl shadow-lg transition text-xs lg:text-sm">
                         🚀 প্রক্রিয়া শুরু করুন (Start Dubbing)
                     </button>
                 </div>
@@ -242,45 +241,139 @@
     </div>
 
     <!-- ========================================= -->
-    <!-- ৩. সাইন-আপ ও লগইন পপ-আপ ফর্ম (সব ফিল্ডসহ) -->
+    <!-- ৩. সাইন-আপ ও লগইন পপ-আপ ফর্ম -->
     <!-- ========================================= -->
     <div id="authModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4">
         <div class="bg-[#111827] border border-gray-800 rounded-3xl p-6 w-full max-w-md relative shadow-2xl">
             <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">✕</button>
+            <button type="button" onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">✕</button>
             
-            <!-- SIGN-UP FORM (First Name, Last Name, Email, Phone, 8-Digit Code) -->
+            <!-- SIGN-UP FORM -->
             <div id="signupFormView">
                 <div class="text-center mb-4">
                     <h3 class="text-xl font-bold">নতুন অ্যাকাউন্ট তৈরি করুন</h3>
                     <p class="text-xs text-gray-400 mt-1">আপনার সঠিক তথ্য এবং ৮ ডিজিটের সিক্রেট কোড দিন</p>
                 </div>
-                <form onsubmit="handleAuth(event)" class="space-y-3">
+                <form id="signupForm" onsubmit="handleAuth(event)" class="space-y-3">
                     <div class="grid grid-cols-2 gap-2">
                         <div>
                             <label class="block text-[11px] text-gray-400 mb-1">প্রথম নাম (First Name)</label>
-                            <input type="text" required placeholder="সোহেল" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                            <input type="text" id="su_fname" required placeholder="সোহেল" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
                         </div>
                         <div>
                             <label class="block text-[11px] text-gray-400 mb-1">শেষ নাম (Last Name)</label>
-                            <input type="text" required placeholder="রানা" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                            <input type="text" id="su_lname" required placeholder="রানা" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
                         </div>
                     </div>
                     <div>
                         <label class="block text-[11px] text-gray-400 mb-1">জিমেইল / ইমেল (Gmail / Email)</label>
-                        <input type="email" required placeholder="example@gmail.com" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                        <input type="email" id="su_email" required placeholder="example@gmail.com" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
                     </div>
                     <div>
                         <label class="block text-[11px] text-gray-400 mb-1">ফোন নম্বর (Phone Number)</label>
-                        <input type="tel" required placeholder="017XXXXXXXX" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                        <input type="tel" id="su_phone" required placeholder="017XXXXXXXX" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
                     </div>
                     <div>
                         <label class="block text-[11px] text-gray-400 mb-1">৮ ডিজিটের কোড (8-Digit Secret Code)</label>
-                        <input type="password" maxlength="8" required placeholder="••••••••" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500 tracking-widest">
+                        <input type="password" id="su_code" maxlength="8" required placeholder="••••••••" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500 tracking-widest">
                     </div>
                     <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold py-3 rounded-xl transition text-xs shadow-lg mt-2">
                         সাইন-আপ সম্পন্ন করুন
                     </button>
                 </form>
                 <div class="mt-4 text-center text-xs text-gray-400">
-                    আগে থেকেই অ্যাকাউন্ট আছে? <span onclick="switchTab('login')" class="text-purple-400 cursor-pointer hover:underline font-medium">লগইন 
+                    আগে থেকেই অ্যাকাউন্ট আছে? <span onclick="switchTab('login')" class="text-purple-400 cursor-pointer hover:underline font-medium">লগইন করুন</span>
+                </div>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <div id="loginFormView" class="hidden">
+                <div class="text-center mb-5">
+                    <h3 class="text-xl font-bold">অ্যাকাউন্টে লগইন করুন</h3>
+                    <p class="text-xs text-gray-400 mt-1">আপনার জিমেইল/ফোন নম্বর এবং ৮ ডিজিট কোড দিন</p>
+                </div>
+                <form id="loginForm" onsubmit="handleAuth(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">জিমেইল অথবা ফোন নম্বর</label>
+                        <input type="text" id="li_user" required placeholder="example@gmail.com বা ফোন নম্বর" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">৮ ডিজিটের কোড (8-Digit Code)</label>
+                        <input type="password" id="li_code" maxlength="8" required placeholder="••••••••" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-purple-500 tracking-widest">
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold py-3 rounded-xl transition text-sm shadow-lg">
+                        লগইন করুন (Login)
+                    </button>
+                </form>
+                <div class="mt-4 text-center text-xs text-gray-400">
+                    নতুন অ্যাকাউন্ট খুলতে চান? <span onclick="switchTab('signup')" class="text-purple-400 cursor-pointer hover:underline font-medium">সাইন-আপ করুন</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript for Seamless Authentication -->
+    <script>
+        window.onload = function() {
+            if(localStorage.getItem('isLoggedIn') === 'true') {
+                showDashboard();
+            }
+        }
+
+        function openModal(type) {
+            const modal = document.getElementById('authModal');
+            const signupView = document.getElementById('signupFormView');
+            const loginView = document.getElementById('loginFormView');
+
+            if(type === 'signup') {
+                signupView.classList.remove('hidden');
+                loginView.classList.add('hidden');
+            } else {
+                loginView.classList.remove('hidden');
+                signupView.classList.add('hidden');
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('authModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        function switchTab(type) {
+            const signupView = document.getElementById('signupFormView');
+            const loginView = document.getElementById('loginFormView');
+
+            if(type === 'signup') {
+                signupView.classList.remove('hidden');
+                loginView.classList.add('hidden');
+            } else {
+                loginView.classList.remove('hidden');
+                signupView.classList.add('hidden');
+            }
+        }
+
+        function handleAuth(event) {
+            event.preventDefault(); // পেজ রিলোড হওয়া বন্ধ করবে
+            localStorage.setItem('isLoggedIn', 'true');
+            closeModal();
+            showDashboard();
+        }
+
+        function showDashboard() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+            document.getElementById('mainDashboard').classList.remove('hidden');
+        }
+
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            location.reload();
+        }
+    </script>
+
+</body>
+</html>
