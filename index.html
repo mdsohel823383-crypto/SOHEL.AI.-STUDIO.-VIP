@@ -13,154 +13,158 @@
         }
     </style>
 </head>
-<body class="bg-[#0b0f19] text-white flex flex-col md:flex-row min-h-screen">
+<body class="bg-[#0b0f19] text-white flex flex-col md:flex-row min-h-screen relative">
 
     <!-- Sidebar / Navigation -->
-    <aside class="w-full md:w-64 bg-[#111827] border-r border-gray-800 p-4 flex flex-col justify-between">
+    <aside class="w-full md:w-64 bg-[#111827] border-b md:border-b-0 md:border-r border-gray-800 p-4 flex flex-col justify-between">
         <div>
-            <!-- Logo -->
-            <div class="flex items-center space-x-3 mb-8">
-                <div class="bg-gradient-to-tr from-purple-600 to-blue-500 p-2.5 rounded-2xl text-xl font-bold shadow-lg">S</div>
-                <div>
-                    <h1 class="text-base font-bold tracking-wide">Sohel AI</h1>
-                    <p class="text-[10px] text-gray-400">All-in-One AI Platform</p>
+            <!-- Logo & Auth Buttons for Mobile -->
+            <div class="flex items-center justify-between mb-6 md:mb-8">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-gradient-to-tr from-purple-600 to-blue-500 p-2.5 rounded-2xl text-xl font-bold shadow-lg">S</div>
+                    <div>
+                        <h1 class="text-base font-bold tracking-wide">Sohel AI</h1>
+                        <p class="text-[10px] text-gray-400">All-in-One AI Platform</p>
+                    </div>
+                </div>
+                <div class="flex gap-2 md:hidden">
+                    <button onclick="openModal('signup')" class="bg-purple-600 hover:bg-purple-700 text-white text-[11px] font-medium px-2.5 py-1.5 rounded-xl transition shadow-md">সাইন আপ</button>
+                    <button onclick="openModal('login')" class="bg-gray-800 hover:bg-gray-700 text-white text-[11px] font-medium px-2.5 py-1.5 rounded-xl transition border border-gray-700">লগইন</button>
                 </div>
             </div>
 
             <!-- Menu Links -->
-            <nav class="space-y-1.5 text-sm">
-                <a href="#" class="flex items-center space-x-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-3 rounded-xl font-medium shadow-md">
+            <nav class="flex md:flex-col space-x-2 md:space-x-0 md:space-y-1.5 overflow-x-auto md:overflow-visible text-sm pb-2 md:pb-0">
+                <a href="#" class="flex items-center space-x-2 md:space-x-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-3 md:px-4 py-2.5 md:py-3 rounded-xl font-medium shadow-md whitespace-nowrap">
                     <span>🏠</span>
                     <span>Home</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 text-gray-400 hover:bg-gray-800/60 hover:text-white px-4 py-3 rounded-xl transition">
+                <a href="#" class="flex items-center space-x-2 md:space-x-3 text-gray-400 hover:bg-gray-800/60 hover:text-white px-3 md:px-4 py-2.5 md:py-3 rounded-xl transition whitespace-nowrap">
                     <span>🎬</span>
                     <span>AI Video</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 text-gray-400 hover:bg-gray-800/60 hover:text-white px-4 py-3 rounded-xl transition">
+                <a href="#" class="flex items-center space-x-2 md:space-x-3 text-gray-400 hover:bg-gray-800/60 hover:text-white px-3 md:px-4 py-2.5 md:py-3 rounded-xl transition whitespace-nowrap">
                     <span>🖼️</span>
                     <span>AI Photo</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 text-gray-400 hover:bg-gray-800/60 hover:text-white px-4 py-3 rounded-xl transition">
+                <a href="#" class="flex items-center space-x-2 md:space-x-3 text-gray-400 hover:bg-gray-800/60 hover:text-white px-3 md:px-4 py-2.5 md:py-3 rounded-xl transition whitespace-nowrap">
                     <span>✂️</span>
-                    <span>Background Remove</span>
+                    <span>BG Remove</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 text-gray-400 hover:bg-gray-800/60 hover:text-white px-4 py-3 rounded-xl transition">
+                <a href="#" class="flex items-center space-x-2 md:space-x-3 text-gray-400 hover:bg-gray-800/60 hover:text-white px-3 md:px-4 py-2.5 md:py-3 rounded-xl transition whitespace-nowrap">
                     <span>🎙️</span>
-                    <span>Video Dubbing</span>
+                    <span>Dubbing</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 text-gray-400 hover:bg-gray-800/60 hover:text-white px-4 py-3 rounded-xl transition">
+                <a href="#" class="flex items-center space-x-2 md:space-x-3 text-gray-400 hover:bg-gray-800/60 hover:text-white px-3 md:px-4 py-2.5 md:py-3 rounded-xl transition whitespace-nowrap">
                     <span>🌐</span>
-                    <span>Translate AI</span>
-                </a>
-                <a href="#" class="flex items-center space-x-3 text-gray-400 hover:bg-gray-800/60 hover:text-white px-4 py-3 rounded-xl transition">
-                    <span>ℹ️</span>
-                    <span>About</span>
+                    <span>Translate</span>
                 </a>
             </nav>
         </div>
 
         <!-- Pro Box -->
-        <div class="mt-8 bg-gradient-to-b from-[#1a1c2e] to-[#111827] border border-purple-500/20 p-4 rounded-2xl">
+        <div class="hidden md:block mt-8 bg-gradient-to-b from-[#1a1c2e] to-[#111827] border border-purple-500/20 p-4 rounded-2xl">
             <h3 class="font-bold text-sm text-purple-400 flex items-center gap-1.5">👑 Sohel AI Pro</h3>
             <p class="text-[11px] text-gray-400 mt-1">Coming Soon</p>
-            <p class="text-[10px] text-gray-500 mt-1">আরও অনেক Premium AI Features পেতে অপেক্ষায় থাকুন...</p>
         </div>
     </aside>
 
     <!-- Main Content Area -->
     <main class="flex-1 p-4 md:p-8 overflow-y-auto">
         
+        <!-- Top Bar with Desktop Auth Buttons -->
+        <div class="hidden md:flex justify-end gap-3 mb-6">
+            <button onclick="openModal('signup')" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white text-sm font-medium px-5 py-2.5 rounded-2xl transition shadow-lg flex items-center gap-2">
+                <span>📝</span> সাইন-আপ (Register)
+            </button>
+            <button onclick="openModal('login')" class="bg-[#111827] border border-gray-700 hover:border-purple-500 text-white text-sm font-medium px-5 py-2.5 rounded-2xl transition shadow-md flex items-center gap-2">
+                <span>👤</span> লগইন
+            </button>
+        </div>
+
         <!-- Top Banner -->
-        <div class="bg-gradient-to-r from-[#141226] via-[#1a103c] to-[#0f172a] border border-purple-500/20 rounded-3xl p-6 md:p-8 mb-8 flex flex-col md:flex-row items-center justify-between relative overflow-hidden">
+        <div class="bg-gradient-to-r from-[#141226] via-[#1a103c] to-[#0f172a] border border-purple-500/20 rounded-3xl p-6 md:p-8 mb-6 md:mb-8 flex flex-col md:flex-row items-center justify-between relative overflow-hidden">
             <div class="space-y-3 z-10">
-                <span class="bg-green-500/10 text-green-400 text-xs px-3 py-1 rounded-full border border-green-500/20 inline-block font-medium">✓ No Login Required</span>
-                <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Welcome to <span class="text-purple-400">Sohel AI</span></h2>
+                <span class="bg-purple-500/10 text-purple-400 text-xs px-3 py-1 rounded-full border border-purple-500/20 inline-block font-medium">✨ All-in-One AI Platform</span>
+                <h2 class="text-2xl md:text-4xl font-bold tracking-tight">Welcome to <span class="text-purple-400">Sohel AI</span></h2>
                 <p class="text-gray-300 text-xs md:text-sm max-w-xl leading-relaxed">একটি All-in-One AI Platform যেখানে আপনি ভিডিও তৈরি, এডিটিং, ডাবিং, ট্রান্সলেট এবং আরও অনেক কিছু করতে পারবেন।</p>
             </div>
             <div class="mt-6 md:mt-0 z-10">
-                <div class="w-32 h-32 md:w-36 md:h-36 bg-purple-900/20 rounded-full flex items-center justify-center border border-purple-500/30 text-5xl shadow-inner">
+                <div class="w-24 h-24 md:w-36 md:h-36 bg-purple-900/20 rounded-full flex items-center justify-center border border-purple-500/30 text-4xl md:text-5xl shadow-inner">
                     🤖
                 </div>
             </div>
         </div>
 
         <!-- Our AI Tools Section -->
-        <div class="mb-8">
+        <div class="mb-6 md:mb-8">
             <h3 class="text-base font-bold mb-4 flex items-center gap-2">✨ Our AI Tools</h3>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                <!-- Tool 1 -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
                 <div class="bg-[#111827] border border-gray-800 hover:border-purple-500/50 rounded-2xl p-4 flex flex-col justify-between transition cursor-pointer group">
                     <div>
-                        <div class="w-10 h-10 rounded-xl bg-purple-600/20 flex items-center justify-center text-purple-400 text-xl mb-3 group-hover:scale-110 transition">🎬</div>
-                        <h4 class="font-bold text-sm mb-1">AI Video</h4>
-                        <p class="text-[11px] text-gray-400">AI দিয়ে ভিডিও তৈরি ও এডিটিং করুন</p>
+                        <div class="w-9 h-9 rounded-xl bg-purple-600/20 flex items-center justify-center text-purple-400 text-lg mb-3">🎬</div>
+                        <h4 class="font-bold text-xs md:text-sm mb-1">AI Video</h4>
+                        <p class="text-[10px] md:text-[11px] text-gray-400">AI দিয়ে ভিডিও তৈরি ও এডিটিং</p>
                     </div>
-                    <button class="mt-4 text-xs text-purple-400 hover:text-purple-300 flex items-center gap-1 font-medium">ব্যবহার করুন ➔</button>
+                    <span class="mt-4 text-[11px] text-purple-400 font-medium">ব্যবহার করুন ➔</span>
                 </div>
-                <!-- Tool 2 -->
                 <div class="bg-[#111827] border border-gray-800 hover:border-purple-500/50 rounded-2xl p-4 flex flex-col justify-between transition cursor-pointer group">
                     <div>
-                        <div class="w-10 h-10 rounded-xl bg-blue-600/20 flex items-center justify-center text-blue-400 text-xl mb-3 group-hover:scale-110 transition">🖼️</div>
-                        <h4 class="font-bold text-sm mb-1">AI Photo</h4>
-                        <p class="text-[11px] text-gray-400">AI দিয়ে ছবি এডিটিং ও উন্নত করুন</p>
+                        <div class="w-9 h-9 rounded-xl bg-blue-600/20 flex items-center justify-center text-blue-400 text-lg mb-3">🖼️</div>
+                        <h4 class="font-bold text-xs md:text-sm mb-1">AI Photo</h4>
+                        <p class="text-[10px] md:text-[11px] text-gray-400">AI দিয়ে ছবি এডিটিং ও উন্নত</p>
                     </div>
-                    <button class="mt-4 text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1 font-medium">ব্যবহার করুন ➔</button>
+                    <span class="mt-4 text-[11px] text-blue-400 font-medium">ব্যবহার করুন ➔</span>
                 </div>
-                <!-- Tool 3 -->
                 <div class="bg-[#111827] border border-gray-800 hover:border-purple-500/50 rounded-2xl p-4 flex flex-col justify-between transition cursor-pointer group">
                     <div>
-                        <div class="w-10 h-10 rounded-xl bg-emerald-600/20 flex items-center justify-center text-emerald-400 text-xl mb-3 group-hover:scale-110 transition">✂️</div>
-                        <h4 class="font-bold text-sm mb-1">Background Remove</h4>
-                        <p class="text-[11px] text-gray-400">ছবির ব্যাকগ্রাউন্ড রিমুভ করুন</p>
+                        <div class="w-9 h-9 rounded-xl bg-emerald-600/20 flex items-center justify-center text-emerald-400 text-lg mb-3">✂️</div>
+                        <h4 class="font-bold text-xs md:text-sm mb-1">BG Remove</h4>
+                        <p class="text-[10px] md:text-[11px] text-gray-400">ছবির ব্যাকগ্রাউন্ড রিমুভ</p>
                     </div>
-                    <button class="mt-4 text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 font-medium">ব্যবহার করুন ➔</button>
+                    <span class="mt-4 text-[11px] text-emerald-400 font-medium">ব্যবহার করুন ➔</span>
                 </div>
-                <!-- Tool 4 -->
                 <div class="bg-[#111827] border border-gray-800 hover:border-purple-500/50 rounded-2xl p-4 flex flex-col justify-between transition cursor-pointer group">
                     <div>
-                        <div class="w-10 h-10 rounded-xl bg-amber-600/20 flex items-center justify-center text-amber-400 text-xl mb-3 group-hover:scale-110 transition">🎙️</div>
-                        <h4 class="font-bold text-sm mb-1">Video Dubbing</h4>
-                        <p class="text-[11px] text-gray-400">যেকোনো ভাষায় ভিডিও ডাবিং করুন AI দিয়ে</p>
+                        <div class="w-9 h-9 rounded-xl bg-amber-600/20 flex items-center justify-center text-amber-400 text-lg mb-3">🎙️</div>
+                        <h4 class="font-bold text-xs md:text-sm mb-1">Video Dubbing</h4>
+                        <p class="text-[10px] md:text-[11px] text-gray-400">যেকোনো ভাষায় ভিডিও ডাবিং</p>
                     </div>
-                    <button class="mt-4 text-xs text-amber-400 hover:text-amber-300 flex items-center gap-1 font-medium">ব্যবহার করুন ➔</button>
+                    <span class="mt-4 text-[11px] text-amber-400 font-medium">ব্যবহার করুন ➔</span>
                 </div>
-                <!-- Tool 5 -->
                 <div class="bg-[#111827] border border-gray-800 hover:border-purple-500/50 rounded-2xl p-4 flex flex-col justify-between transition cursor-pointer group col-span-2 md:col-span-1">
                     <div>
-                        <div class="w-10 h-10 rounded-xl bg-indigo-600/20 flex items-center justify-center text-indigo-400 text-xl mb-3 group-hover:scale-110 transition">🌐</div>
-                        <h4 class="font-bold text-sm mb-1">Translate AI</h4>
-                        <p class="text-[11px] text-gray-400">যেকোনো ভাষা অনুবাদ করুন সেকেন্ডে</p>
+                        <div class="w-9 h-9 rounded-xl bg-indigo-600/20 flex items-center justify-center text-indigo-400 text-lg mb-3">🌐</div>
+                        <h4 class="font-bold text-xs md:text-sm mb-1">Translate AI</h4>
+                        <p class="text-[10px] md:text-[11px] text-gray-400">যেকোনো ভাষা অনুবাদ সেকেন্ডে</p>
                     </div>
-                    <button class="mt-4 text-xs text-indigo-400 hover:text-indigo-300 flex items-center gap-1 font-medium">ব্যবহার করুন ➔</button>
+                    <span class="mt-4 text-[11px] text-indigo-400 font-medium">ব্যবহার করুন ➔</span>
                 </div>
             </div>
         </div>
 
         <!-- Video Dubbing & Translate Section -->
-        <div class="bg-[#111827] border border-gray-800 rounded-3xl p-6 mb-8 shadow-xl">
+        <div class="bg-[#111827] border border-gray-800 rounded-3xl p-5 md:p-6 mb-6 shadow-xl">
             <div class="flex items-center gap-3 mb-2">
                 <span class="text-2xl">🎙️</span>
                 <div>
-                    <h3 class="text-lg font-bold">Video Dubbing & Translate AI</h3>
-                    <p class="text-gray-400 text-xs">আপনার ভিডিও আপলোড করুন এবং যেকোনো ভাষায় ডাবিং বা অনুবাদ করুন</p>
+                    <h3 class="text-base md:text-lg font-bold">Video Dubbing & Translate AI</h3>
+                    <p class="text-gray-400 text-xs">আপনার ভিডিও আপলোড করুন এবং ডাবিং বা অনুবাদ করুন</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                <!-- Upload Box -->
-                <div class="border-2 border-dashed border-gray-700 rounded-2xl p-6 text-center flex flex-col items-center justify-center hover:border-purple-500 transition cursor-pointer bg-[#0e131f]">
-                    <span class="text-4xl mb-2">📁</span>
-                    <h4 class="font-semibold text-sm mb-1">ভিডিও ফাইল নির্বাচন করুন</h4>
-                    <p class="text-[11px] text-gray-500 mb-4">MP4, MOV, MKV, AVI (Max 500MB)</p>
-                    <button class="bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium px-5 py-2.5 rounded-xl transition shadow-md">ফাইল নির্বাচন করুন</button>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-4 md:mt-6">
+                <div class="border-2 border-dashed border-gray-700 rounded-2xl p-5 text-center flex flex-col items-center justify-center hover:border-purple-500 transition cursor-pointer bg-[#0e131f]">
+                    <span class="text-3xl mb-2">📁</span>
+                    <h4 class="font-semibold text-xs md:text-sm mb-1">ভিডিও ফাইল নির্বাচন করুন</h4>
+                    <p class="text-[10px] text-gray-500 mb-3">MP4, MOV, MKV, AVI (Max 500MB)</p>
+                    <button class="bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium px-4 py-2 rounded-xl transition shadow-md">ফাইল নির্বাচন করুন</button>
                 </div>
 
-                <!-- Language Options -->
-                <div class="space-y-4 flex flex-col justify-between">
+                <div class="space-y-3 flex flex-col justify-between">
                     <div>
-                        <label class="block text-xs text-gray-400 mb-2 font-medium">২. সোর্স ভাষা নির্বাচন করুন</label>
-                        <select class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-purple-500">
+                        <label class="block text-xs text-gray-400 mb-1.5 font-medium">সোর্স ভাষা নির্বাচন করুন</label>
+                        <select class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
                             <option>🇧🇩 বাংলা (Bangla)</option>
                             <option>🇺🇸 English</option>
                             <option>🇯🇵 Japanese</option>
@@ -170,30 +174,138 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs text-gray-400 mb-2 font-medium">৩. টার্গেট ভাষা নির্বাচন করুন</label>
+                        <label class="block text-xs text-gray-400 mb-1.5 font-medium">টার্গেট ভাষা নির্বাচন করুন</label>
                         <div class="grid grid-cols-3 gap-2">
-                            <div class="bg-purple-600/20 border border-purple-500 text-center p-2.5 rounded-xl text-xs cursor-pointer font-medium">🇯🇵 Japanese</div>
-                            <div class="bg-[#1a2234] border border-gray-700 text-center p-2.5 rounded-xl text-xs cursor-pointer text-gray-300">🇨🇳 Chinese</div>
-                            <div class="bg-[#1a2234] border border-gray-700 text-center p-2.5 rounded-xl text-xs cursor-pointer text-gray-300">🇰🇷 Korean</div>
+                            <div class="bg-purple-600/20 border border-purple-500 text-center p-2 rounded-xl text-xs cursor-pointer font-medium">🇯🇵 Japanese</div>
+                            <div class="bg-[#1a2234] border border-gray-700 text-center p-2 rounded-xl text-xs cursor-pointer text-gray-300">🇨🇳 Chinese</div>
+                            <div class="bg-[#1a2234] border border-gray-700 text-center p-2 rounded-xl text-xs cursor-pointer text-gray-300">🇰🇷 Korean</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Start Button -->
-            <div class="mt-6 text-center">
-                <button class="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:opacity-90 text-white font-bold py-3.5 rounded-2xl shadow-lg transition text-sm">
+            <div class="mt-5 text-center">
+                <button class="w-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:opacity-90 text-white font-bold py-3 rounded-2xl shadow-lg transition text-xs md:text-sm">
                     🚀 প্রক্রিয়া শুরু করুন (Start)
                 </button>
             </div>
         </div>
 
-        <!-- Footer / Features list -->
-        <div class="text-center text-xs text-gray-500 mt-12 pb-4">
-            <p>© 2026 Sohel AI. All Rights Reserved. ❤️ Made with ❤️ for Everyone</p>
+        <div class="text-center text-[11px] text-gray-500 mt-8 pb-4">
+            <p>© 2026 Sohel AI. All Rights Reserved. ❤️ Made for Everyone</p>
         </div>
 
     </main>
+
+    <!-- Modal Box for Sign-Up / Login -->
+    <div id="authModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-[#111827] border border-gray-800 rounded-3xl p-6 w-full max-w-md relative shadow-2xl">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">✕</button>
+            
+            <!-- SIGN-UP FORM -->
+            <div id="signupFormView">
+                <div class="text-center mb-5">
+                    <h3 class="text-xl font-bold">নতুন অ্যাকাউন্ট তৈরি করুন</h3>
+                    <p class="text-xs text-gray-400 mt-1">ফাস্ট নেম, লাস্ট নেম এবং ৮ ডিজিট কোড দিন</p>
+                </div>
+                <form onsubmit="event.preventDefault(); alert('সফলভাবে সাইন-আপ সম্পন্ন হয়েছে!'); closeModal();" class="space-y-3">
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[11px] text-gray-400 mb-1">প্রথম নাম (First Name)</label>
+                            <input type="text" required placeholder="সোহেল" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] text-gray-400 mb-1">শেষ নাম (Last Name)</label>
+                            <input type="text" required placeholder="রানা" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-gray-400 mb-1">ইমেল এড্রেস</label>
+                        <input type="email" required placeholder="example@gmail.com" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-gray-400 mb-1">ফোন নম্বর</label>
+                        <input type="tel" required placeholder="017XXXXXXXX" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-gray-400 mb-1">৮ ডিজিটের সিক্রেট কোড (8-Digit Code)</label>
+                        <input type="password" maxlength="8" required placeholder="••••••••" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-500 tracking-widest">
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold py-3 rounded-xl transition text-xs shadow-lg mt-2">
+                        সাইন-আপ সম্পন্ন করুন
+                    </button>
+                </form>
+                <div class="mt-4 text-center text-xs text-gray-400">
+                    আগে থেকেই অ্যাকাউন্ট আছে? <span onclick="switchTab('login')" class="text-purple-400 cursor-pointer hover:underline font-medium">লগইন করুন</span>
+                </div>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <div id="loginFormView" class="hidden">
+                <div class="text-center mb-5">
+                    <h3 class="text-xl font-bold">অ্যাকাউন্টে লগইন করুন</h3>
+                    <p class="text-xs text-gray-400 mt-1">আপনার ফোন/ইমেল এবং ৮ ডিজিট কোড দিন</p>
+                </div>
+                <form onsubmit="event.preventDefault(); alert('সফলভাবে লগইন হয়েছে!'); closeModal();" class="space-y-4">
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">ইমেল অথবা ফোন নম্বর</label>
+                        <input type="text" required placeholder="ইমেল বা ফোন নম্বর দিন" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-400 mb-1">৮ ডিজিটের কোড (8-Digit Code)</label>
+                        <input type="password" maxlength="8" required placeholder="••••••••" class="w-full bg-[#1a2234] border border-gray-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-purple-500 tracking-widest">
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90 text-white font-bold py-3 rounded-xl transition text-sm shadow-lg">
+                        লগইন করুন (Login)
+                    </button>
+                </form>
+                <div class="mt-4 text-center text-xs text-gray-400">
+                    নতুন অ্যাকাউন্ট খুলতে চান? <span onclick="switchTab('signup')" class="text-purple-400 cursor-pointer hover:underline font-medium">সাইন-আপ করুন</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript for Modal & Form Switch -->
+    <script>
+        function openModal(type) {
+            const modal = document.getElementById('authModal');
+            const signupView = document.getElementById('signupFormView');
+            const loginView = document.getElementById('loginFormView');
+
+            if(type === 'signup') {
+                signupView.classList.remove('hidden');
+                loginView.classList.add('hidden');
+            } else {
+                loginView.classList.remove('hidden');
+                signupView.classList.add('hidden');
+            }
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('authModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        function switchTab(type) {
+            const signupView = document.getElementById('signupFormView');
+            const loginView = document.getElementById('loginFormView');
+
+            if(type === 'signup') {
+                signupView.classList.remove('hidden');
+                loginView.classList.add('hidden');
+            } else {
+                loginView.classList.remove('hidden');
+                signupView.classList.add('hidden');
+            }
+        }
+    </script>
 
 </body>
                     </html>
