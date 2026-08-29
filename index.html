@@ -10,11 +10,11 @@
     <style>
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background-color: #0b0f19;
+            background-color: #070913;
             color: #ffffff;
         }
         .glow-effect {
-            box-shadow: 0 0 35px rgba(147, 51, 234, 0.35);
+            box-shadow: 0 0 40px rgba(147, 51, 234, 0.4);
         }
     </style>
 </head>
@@ -24,11 +24,11 @@
     <!-- ১. লগইন / সাইন-আপ ল্যান্ডিং গেটওয়ে -->
     <!-- ========================================= -->
     <div id="welcomeScreen" class="fixed inset-0 bg-[#070913] z-50 flex flex-col items-center justify-center p-4 text-center overflow-y-auto">
-        <div class="absolute w-80 h-80 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="relative z-10 max-w-md w-full my-auto py-6">
             <!-- প্রিমিয়াম লোগো এবং নাম -->
-            <div class="mb-5">
+            <div class="mb-6">
                 <div class="w-20 h-20 bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 rounded-3xl mx-auto flex items-center justify-center text-3xl shadow-2xl mb-3 border border-purple-400/40 glow-effect">
                     ✨
                 </div>
@@ -38,7 +38,7 @@
 
             <!-- লগইন / সাইন-আপ বক্স -->
             <div class="bg-[#111827]/95 backdrop-blur-xl border border-purple-500/30 rounded-3xl p-6 shadow-2xl text-left glow-effect">
-                <div class="flex rounded-2xl bg-[#0b0f19] p-1.5 mb-5 border border-gray-800">
+                <div class="flex rounded-2xl bg-[#070913] p-1.5 mb-5 border border-gray-800">
                     <button type="button" id="tabLoginBtn" onclick="switchMainTab('login')" class="flex-1 py-2 text-xs font-bold rounded-xl transition bg-purple-600 text-white shadow">লগইন (Login)</button>
                     <button type="button" id="tabSignupBtn" onclick="switchMainTab('signup')" class="flex-1 py-2 text-xs font-bold rounded-xl transition text-gray-400 hover:text-white">সাইন-আপ (Register)</button>
                 </div>
@@ -103,7 +103,7 @@
                 </div>
             </div>
 
-            <nav class="hidden md:flex items-center space-x-1 bg-[#0b0f19] p-1 rounded-2xl border border-gray-800">
+            <nav class="hidden md:flex items-center space-x-1 bg-[#070913] p-1 rounded-2xl border border-gray-800">
                 <a href="#" class="flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-xl text-xs font-medium shadow">
                     <span>🏠</span><span>Home</span>
                 </a>
@@ -238,10 +238,9 @@
 
     <!-- JavaScript logic -->
     <script>
+        // পেজ লোড হওয়ার সাথে সাথে যেন প্রথমে লগইন স্ক্রিনটিই দেখায়, ব্রাউজারের অটো-লগইন বন্ধ করা হলো
         window.onload = function() {
-            if(localStorage.getItem('isLoggedIn') === 'true') {
-                showDashboard();
-            }
+            localStorage.removeItem('isLoggedIn');
         }
 
         function switchMainTab(type) {
@@ -265,17 +264,11 @@
 
         function handleAuthSubmit(event, type) {
             event.preventDefault();
-            localStorage.setItem('isLoggedIn', 'true');
-            showDashboard();
-        }
-
-        function showDashboard() {
             document.getElementById('welcomeScreen').style.display = 'none';
             document.getElementById('mainDashboard').classList.remove('hidden');
         }
 
         function logout() {
-            localStorage.removeItem('isLoggedIn');
             location.reload();
         }
     </script>
